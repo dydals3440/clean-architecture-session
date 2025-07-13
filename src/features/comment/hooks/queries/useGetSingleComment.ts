@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query';
-import { getSingleComment } from '@/apis/comment';
-import { QUERY_KEY } from '@/constants/queryKey';
-import type { GetSingleCommentRequest } from '@/types/comment';
+import { getSingleComment } from '@/features/comment/apis/comment';
+import { QUERY_KEY } from '@/features/comment/constants/queryKey';
+import type { GetSingleCommentRequest } from '@/features/comment/types/comment';
 
 export const useGetSingleComment = (request: GetSingleCommentRequest) => {
   return queryOptions({

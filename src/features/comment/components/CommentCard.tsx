@@ -1,4 +1,4 @@
-import type { Comment } from '@/types/comment';
+import type { Comment } from '@/features/comment/types/comment';
 
 interface CommentCardProps {
   comment: Comment;

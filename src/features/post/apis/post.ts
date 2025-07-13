@@ -1,5 +1,8 @@
-import { API_ENDPOINTS } from '@/constants/api';
-import type { GetPostsRequest, GetSinglePostRequest } from '@/types/post';
+import { API_ENDPOINTS } from '@/features/post/constants/url';
+import type {
+  GetPostsRequest,
+  GetSinglePostRequest,
+} from '@/features/post/types/post';
 
 export const getPosts = async (request: GetPostsRequest) => {
   const response = await fetch(

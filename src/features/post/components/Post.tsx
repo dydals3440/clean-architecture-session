@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useGetSinglePost } from '@/hooks/queries/useGetSinglePost';
+import { useGetSinglePost } from '@/features/post/hooks/queries/useGetSinglePost';
 
 export const Post = () => {
   const { data: post } = useQuery(useGetSinglePost({ id: 1 }));

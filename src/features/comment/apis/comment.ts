@@ -1,11 +1,12 @@
-import { API_ENDPOINTS } from '@/constants/api';
-import { fetcher } from '@/libs/fetcher';
+import { fetcher } from '@/shared/libs/fetcher';
+
+import { API_ENDPOINTS } from '@/features/comment/constants/url';
 import type {
   GetSingleCommentRequest,
   Comment,
   GetCommentsRequest,
   GetCommentsResponse,
-} from '@/types/comment';
+} from '@/features/comment/types/comment';
 
 export const getSingleComment = async (request: GetSingleCommentRequest) => {
   const data = await fetcher<Comment>(
