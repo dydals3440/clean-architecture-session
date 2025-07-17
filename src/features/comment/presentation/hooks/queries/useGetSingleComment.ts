@@ -1,0 +1,13 @@
+import { queryOptions } from '@tanstack/react-query';
+import { QUERY_KEY } from '@/features/comment/presentation/hooks/queryKey';
+import { useComment } from '@/features/comment/presentation/context/CommentContext';
+import type { GetSingleCommentRequest } from '@/features/comment/infrastructure/dto/request/GetSingleCommentRequest';
+
+export const useGetSingleComment = (request: GetSingleCommentRequest) => {
+  const commentService = useComment();
+
+  return queryOptions({
+    queryKey: [QUERY_KEY.COMMENTS, request.id],
+    queryFn: () => commentService.getSingleComment(request),
+  });
+};

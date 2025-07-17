@@ -9,15 +9,7 @@ export interface Comment {
   };
 }
 
-export interface GetSingleCommentRequest {
-  id: number;
-}
-
-export interface GetCommentsRequest {
-  postId: number;
-}
-
-export interface GetCommentsResponse {
+export interface GetAllCommentResponse {
   comments: Comment[];
   limit: number;
   skip: number;

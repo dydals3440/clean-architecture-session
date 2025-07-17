@@ -1,7 +1,7 @@
-import type { Comment } from '@/features/comment/types/comment';
+import type { CommentResponseDto } from '@/features/comment/application/validators/response/CommentResponseDto';
 
 interface CommentCardProps {
-  comment: Comment;
+  comment: CommentResponseDto;
 }
 
 export const CommentCard = ({ comment }: CommentCardProps) => {
@@ -19,6 +19,9 @@ export const CommentCard = ({ comment }: CommentCardProps) => {
             <h3 className='text-sm font-semibold text-gray-900 truncate'>
               {comment.user?.fullName || '익명 사용자'}
             </h3>
+            <span className='text-red-500'>
+              {comment.isEmmaWilson && '핵심 유저'}
+            </span>
             <span className='text-xs text-gray-500'>•</span>
             <span className='text-xs text-gray-500'>방금 전</span>
           </div>
