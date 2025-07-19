@@ -1,10 +1,18 @@
 import type { CommentResponseDto } from '@/features/comment/application/validators/response/CommentResponseDto';
+import { useLikeMutation } from '@/features/comment/presentation/hooks/mutations/useLikeMutation';
+import { useComment } from '@/features/comment/presentation/context/CommentContext';
 
 interface CommentCardProps {
   comment: CommentResponseDto;
 }
 
 export const CommentCard = ({ comment }: CommentCardProps) => {
+  const { mutate } = useLikeMutation();
+  const commentService = useComment();
+
+  const userId = 1;
+  const canLike = commentService.canLikeComment(comment, userId);
+
   return (
     <div className='bg-white rounded-lg border border-gray-200 p-4 mb-3 shadow-sm hover:shadow-md transition-shadow duration-200'>
       <div className='flex items-start space-x-3'>
@@ -30,7 +38,11 @@ export const CommentCard = ({ comment }: CommentCardProps) => {
           </p>
 
           <div className='flex items-center space-x-4 mt-2'>
-            <button className='text-xs text-gray-500 hover:text-blue-600 transition-colors duration-150'>
+            <button
+              className='text-xs text-gray-500 hover:text-blue-600 transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
+              onClick={() => mutate({ commentDto: comment, userId })}
+              disabled={!canLike}
+            >
               좋아요
             </button>
             <button className='text-xs text-gray-500 hover:text-blue-600 transition-colors duration-150'>

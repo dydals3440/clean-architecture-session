@@ -32,6 +32,10 @@ export class Comment {
     return this.dto.user.fullName === 'Emma Wilson';
   }
 
+  canLike(userId: number): boolean {
+    return this.dto.user.id !== userId; // 자신의 댓글은 좋아요 불가능
+  }
+
   //  mappers 대신 이렇게 처리할 수 도 있긴함.
   //   toDto() {
   //     return {

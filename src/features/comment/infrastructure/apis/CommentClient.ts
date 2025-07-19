@@ -8,6 +8,7 @@ import type {
 } from '../dto/response/GetAllCommentResponse';
 import type { CommentClientImplements } from './CommentClientImplements';
 import { API_ENDPOINTS } from './constants/url';
+import type { PostLikeRequest } from '../dto/request/PostLikeRequest';
 
 export class CommentClient implements CommentClientImplements {
   private static instance: CommentClient | undefined;
@@ -47,5 +48,9 @@ export class CommentClient implements CommentClientImplements {
     const { data } = await this.httpClient.get<Comment>(`/${request.id}`);
 
     return data;
+  }
+
+  public async like(request: PostLikeRequest): Promise<void> {
+    await this.httpClient.post(`/${request.commentId}/like`);
   }
 }
