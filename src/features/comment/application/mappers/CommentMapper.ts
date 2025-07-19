@@ -1,5 +1,4 @@
 import { Comment } from '@/features/comment/domain/models/Comment';
-
 import type { CommentResponseDto } from '../validators/response/CommentResponseDto';
 
 export const toCommentResponseDto = (comment: Comment): CommentResponseDto => ({

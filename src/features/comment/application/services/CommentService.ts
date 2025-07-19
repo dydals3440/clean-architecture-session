@@ -1,8 +1,7 @@
+import { Comment } from '@/features/comment/domain/models/Comment';
 import type { CommentClientImplements } from '@/features/comment/infrastructure/apis/CommentClientImplements';
 import type { GetAllCommentRequest } from '../validators/request/GetAllCommentRequest';
-
 import type { GetSingleCommentRequest } from '../validators/request/GetSingleCommentRequest';
-import { Comment } from '@/features/comment/domain/models/Comment';
 import type { CommentResponseDto } from '../validators/response/CommentResponseDto';
 import { toCommentResponseDto } from '../mappers/CommentMapper';
 

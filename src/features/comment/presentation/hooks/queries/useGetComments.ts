@@ -1,7 +1,8 @@
 import { queryOptions } from '@tanstack/react-query';
-import { QUERY_KEY } from '../queryKey';
-import { useComment } from '../../context/CommentContext';
+
 import type { GetAllCommentRequest } from '@/features/comment/infrastructure/dto/request/GetAllCommentRequest';
+import { useComment } from '../../context/CommentContext';
+import { QUERY_KEY } from '../queryKey';
 
 export const useGetComments = (request: GetAllCommentRequest) => {
   const commentService = useComment();

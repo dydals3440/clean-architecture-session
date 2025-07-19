@@ -1,9 +1,9 @@
 import type { GetAllCommentRequest } from '../dto/request/GetAllCommentRequest';
+import type { GetSingleCommentRequest } from '../dto/request/GetSingleCommentRequest';
 import type {
   Comment,
   GetAllCommentResponse,
 } from '../dto/response/GetAllCommentResponse';
-import type { GetSingleCommentRequest } from '../dto/request/GetSingleCommentRequest';
 
 export interface CommentClientImplements {
   getAllComment: (

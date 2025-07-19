@@ -1,13 +1,12 @@
 import axios, { type AxiosInstance } from 'axios';
 
+import type { GetAllCommentRequest } from '../dto/request/GetAllCommentRequest';
+import type { GetSingleCommentRequest } from '../dto/request/GetSingleCommentRequest';
 import type {
   GetAllCommentResponse,
   Comment,
-} from '@/features/comment/infrastructure/dto/response/GetAllCommentResponse';
-
-import type { GetSingleCommentRequest } from '../dto/request/GetSingleCommentRequest';
+} from '../dto/response/GetAllCommentResponse';
 import type { CommentClientImplements } from './CommentClientImplements';
-import type { GetAllCommentRequest } from '../dto/request/GetAllCommentRequest';
 import { API_ENDPOINTS } from './constants/url';
 
 export class CommentClient implements CommentClientImplements {
