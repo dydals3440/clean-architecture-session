@@ -4,7 +4,6 @@ export const CommentResponseSchema = z.object({
   id: z.number(),
   body: z.string(),
   postId: z.number(),
-  isEmmaWilson: z.boolean(),
   user: z.object({
     id: z.number(),
     username: z.string(),

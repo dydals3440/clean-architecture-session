@@ -6,6 +6,7 @@ import type {
 } from '@/features/comment/infrastructure/dto/response/GetAllCommentResponse';
 import { COMMENT_FIXTURE } from '@/features/comment/__tests__/fixtures/CommentFixture';
 import type { GetAllCommentRequest } from '@/features/comment/infrastructure/dto/request/GetAllCommentRequest';
+import type { PostLikeRequest } from '@/features/comment/infrastructure/dto/request/PostLikeRequest';
 
 export class StubCommentClient implements CommentClientImplements {
   public async getAllComment(
@@ -33,5 +34,10 @@ export class StubCommentClient implements CommentClientImplements {
     }
 
     return comment;
+  }
+
+  public async like(request: PostLikeRequest): Promise<void> {
+    console.log(request);
+    return;
   }
 }

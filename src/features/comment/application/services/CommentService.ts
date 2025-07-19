@@ -28,8 +28,9 @@ export default class CommentService {
     this.instance = undefined;
   }
 
-  public getCommentModel(commentDTO: CommentResponseDto): Comment {
-    return new Comment(commentDTO);
+  // 도메인 모델 생성 책임을 Application 레이어로 이동
+  public createCommentModel(commentDto: CommentResponseDto): Comment {
+    return new Comment(commentDto);
   }
 
   public async getAllComment(
@@ -38,7 +39,7 @@ export default class CommentService {
     const { comments } = await this.commentClient.getAllComment(request);
 
     return comments.map((comment) => {
-      const commentDomain = new Comment(comment);
+      const commentDomain = this.createCommentModel(comment);
 
       // ViewModel만 반환
       return toCommentResponseDto(commentDomain);
@@ -49,7 +50,7 @@ export default class CommentService {
     request: GetSingleCommentRequest
   ): Promise<CommentResponseDto> {
     const commentDTO = await this.commentClient.getSingleComment(request);
-    const commentDomain = new Comment(commentDTO);
+    const commentDomain = this.createCommentModel(commentDTO);
 
     return toCommentResponseDto(commentDomain);
   }
@@ -62,11 +63,6 @@ export default class CommentService {
     await this.commentClient.like({
       commentId: comment.id,
     });
-  }
-
-  // 도메인 모델 생성 책임을 Application 레이어로 이동
-  public createCommentModel(commentDto: CommentResponseDto): Comment {
-    return new Comment(commentDto);
   }
 
   // 좋아요 가능 여부 확인 메서드 추가
