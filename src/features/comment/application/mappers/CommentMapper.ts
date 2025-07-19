@@ -6,7 +6,7 @@ import { Comment } from '@/features/comment/domain/models/Comment';
 // - UI 중심으로 설계
 // - Domain 모델의 내부 복잡성은 숨김
 // - 테스트, Mock 용이
-interface CommentViewModel {
+export interface CommentViewModelProps {
   id: number;
   body: string;
   postId: number;
@@ -21,7 +21,9 @@ interface CommentViewModel {
 // Domain을 ViewModel로 변환하는 메서드
 // Domain : 비즈니스 로직 중심, ViewModel: UI 중심
 // 외부 시스템의 개입은 절대 금지 -> zod 기반의 Dto 타입 (서버 응답 전용 타입)을 가져다 쓰는 건 Layer 간 의존 역전 위반입니다.
-export const toCommentResponseDto = (comment: Comment): CommentViewModel => ({
+export const toCommentResponseDto = (
+  comment: Comment
+): CommentViewModelProps => ({
   id: comment.id,
   body: comment.body,
   postId: comment.postId,

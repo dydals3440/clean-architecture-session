@@ -3,7 +3,10 @@ import type { CommentClientImplements } from '@/features/comment/infrastructure/
 import type { GetAllCommentRequest } from '../validators/request/GetAllCommentRequest';
 import type { GetSingleCommentRequest } from '../validators/request/GetSingleCommentRequest';
 import type { CommentResponseDto } from '../validators/response/CommentResponseDto';
-import { toCommentResponseDto } from '../mappers/CommentMapper';
+import {
+  toCommentResponseDto,
+  type CommentViewModelProps,
+} from '../mappers/CommentMapper';
 
 export default class CommentService {
   private static instance: CommentService | undefined;
@@ -35,7 +38,7 @@ export default class CommentService {
 
   public async getAllComment(
     request: GetAllCommentRequest
-  ): Promise<CommentResponseDto[]> {
+  ): Promise<CommentViewModelProps[]> {
     const { comments } = await this.commentClient.getAllComment(request);
 
     return comments.map((comment) => {
@@ -48,7 +51,7 @@ export default class CommentService {
 
   public async getSingleComment(
     request: GetSingleCommentRequest
-  ): Promise<CommentResponseDto> {
+  ): Promise<CommentViewModelProps> {
     const commentDTO = await this.commentClient.getSingleComment(request);
     const commentDomain = this.createCommentModel(commentDTO);
 

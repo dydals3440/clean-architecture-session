@@ -1,9 +1,9 @@
-import type { CommentResponseDto } from '@/features/comment/application/validators/response/CommentResponseDto';
 import { useLikeMutation } from '@/features/comment/presentation/hooks/mutations/useLikeMutation';
 import { useComment } from '@/features/comment/presentation/context/CommentContext';
+import type { CommentViewModelProps } from '@/features/comment/application/mappers/CommentMapper';
 
 interface CommentCardProps {
-  comment: CommentResponseDto;
+  comment: CommentViewModelProps;
 }
 
 export const CommentCard = ({ comment }: CommentCardProps) => {
