@@ -1,6 +1,6 @@
-import type { Comment } from '../../dto/response/GetAllCommentResponse';
+import type { Comment } from '@/features/comment/infrastructure/dto/response/GetAllCommentResponse';
 
-export const commentMocks: Comment[] = [
+export const COMMENT_FIXTURE: Comment[] = [
   {
     id: 1,
     body: 'test',

@@ -1,8 +1,9 @@
 import CommentService from '@/features/comment/application/services/CommentService';
-import { StubCommentClient } from '@/features/comment/infrastructure/apis/__tests__/StubCommentClient';
-import { commentMocks } from '@/features/comment/infrastructure/apis/__tests__/CommentMocks';
+import { StubCommentClient } from '@/features/comment/__tests__/infrastructure/apis/StubCommentClient';
+
 import { beforeEach, describe, expect, it, afterEach } from 'vitest';
 import { Comment } from '@/features/comment/domain/models/Comment';
+import { COMMENT_FIXTURE } from '@/features/comment/__tests__/fixtures/CommentFixture';
 
 describe('CommentService', () => {
   let commentService: CommentService;
@@ -34,11 +35,8 @@ describe('CommentService', () => {
 
   describe('getSingleComment', () => {
     it('should return a Comment domain object', async () => {
-      const existing = commentMocks[0];
+      const existing = COMMENT_FIXTURE[0];
       const result = await commentService.getSingleComment({ id: existing.id });
-
-      expect(result).toBeInstanceOf(Comment);
-      console.log(result);
 
       expect(result).toBeInstanceOf(Comment);
       expect(result.id).toBe(existing.id);

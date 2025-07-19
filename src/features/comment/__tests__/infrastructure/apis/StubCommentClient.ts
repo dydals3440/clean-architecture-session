@@ -4,14 +4,14 @@ import type {
   GetAllCommentResponse,
   Comment,
 } from '@/features/comment/infrastructure/dto/response/GetAllCommentResponse';
-import { commentMocks } from './CommentMocks';
+import { COMMENT_FIXTURE } from '@/features/comment/__tests__/fixtures/CommentFixture';
 import type { GetAllCommentRequest } from '@/features/comment/infrastructure/dto/request/GetAllCommentRequest';
 
 export class StubCommentClient implements CommentClientImplements {
   public async getAllComment(
     request: GetAllCommentRequest
   ): Promise<GetAllCommentResponse> {
-    const filtered = commentMocks.filter(
+    const filtered = COMMENT_FIXTURE.filter(
       (comment) => comment.postId === request.postId
     );
 
@@ -26,7 +26,7 @@ export class StubCommentClient implements CommentClientImplements {
   public async getSingleComment(
     request: GetSingleCommentRequest
   ): Promise<Comment> {
-    const comment = commentMocks.find((c) => c.id === request.id);
+    const comment = COMMENT_FIXTURE.find((c) => c.id === request.id);
 
     if (!comment) {
       throw new Error(`Comment with id ${request.id} not found`);

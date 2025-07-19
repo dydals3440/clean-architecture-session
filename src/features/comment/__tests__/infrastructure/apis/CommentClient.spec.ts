@@ -1,5 +1,5 @@
-import { commentMocks } from '@/features/comment/infrastructure/apis/__tests__/CommentMocks';
-import { StubCommentClient } from '@/features/comment/infrastructure/apis/__tests__/StubCommentClient';
+import { COMMENT_FIXTURE } from '@/features/comment/__tests__/fixtures/CommentFixture';
+import { StubCommentClient } from '@/features/comment/__tests__/infrastructure/apis/StubCommentClient';
 import { describe, it, expect } from 'vitest';
 
 describe('CommentClient', () => {
@@ -25,7 +25,7 @@ describe('CommentClient', () => {
 
   describe('getSingleComment', () => {
     it('should return the comment matching the given id', async () => {
-      const existingComment = commentMocks[0];
+      const existingComment = COMMENT_FIXTURE[0];
 
       const comment = await client.getSingleComment({ id: existingComment.id });
 
