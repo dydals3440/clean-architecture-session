@@ -1,5 +1,6 @@
 import { Comment } from '@/features/comment/domain/models/Comment';
-import type { CommentResponseDto } from '@/features/comment/application/validators/response/CommentResponseDto';
+
+import type { CommentResponseDto } from '../validators/response/CommentResponseDto';
 
 export const toCommentResponseDto = (comment: Comment): CommentResponseDto => ({
   id: comment.id,
@@ -7,7 +8,8 @@ export const toCommentResponseDto = (comment: Comment): CommentResponseDto => ({
   postId: comment.postId,
   isEmmaWilson: comment.isEmmaWilson(),
 
-  // const user = comment.user; // 내부 dto.user를 직접 가리킴 (얕은 복사)
+  // // 내부 dto.user를 직접 가리킴 (얕은 복사)
+  // const user = comment.user;
 
   user: {
     id: comment.user.id,

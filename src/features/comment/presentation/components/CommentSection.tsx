@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { useGetComments } from '@/features/comment/presentation/hooks/queries/useGetComments';
-import { CommentCard } from '@/features/comment/presentation/components/CommentCard';
+
+import { useGetComments } from '../hooks/queries/useGetComments';
+import { CommentCard } from './CommentCard';
 
 export const CommentSection = () => {
   const { data } = useQuery(useGetComments({ postId: 1 }));
