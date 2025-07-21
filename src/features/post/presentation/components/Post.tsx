@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useGetSinglePost } from '@/features/post/hooks/queries/useGetSinglePost';
+import { useGetSinglePost } from '@/features/post/presentation/hooks/queries/useGetSinglePost';
 
 export const Post = () => {
   const { data: post } = useQuery(useGetSinglePost({ id: 1 }));
@@ -8,6 +8,7 @@ export const Post = () => {
     <div className='bg-white rounded-lg border border-gray-200 p-6 mb-6 shadow-sm hover:shadow-md transition-shadow duration-200'>
       <div className='mb-4'>
         <h1 className='text-xl font-bold text-gray-900 mb-2 leading-tight'>
+          {post?.hasMotherInTitle && '🧙'}
           {post?.title}
         </h1>
         <div className='flex items-center text-sm text-gray-500 space-x-2'>

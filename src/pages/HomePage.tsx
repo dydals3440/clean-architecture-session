@@ -1,5 +1,5 @@
 import { CommentView } from '@/features/comment/presentation/components/CommentView';
-import { Post } from '@/features/post/components/Post';
+import { Post } from '@/features/post/presentation/components/Post';
 
 export default function HomePage() {
   return (
