@@ -2,7 +2,7 @@
 // Presentation Layer에서 사용하는 데이터 타입
 // UI로 필요한 데이터를 가공해주는거죠. Domain이 변경되었다고 해서 영향을 받으면 안됨.
 
-import type { Post } from '@/features/post/domain/Post';
+import type { Post } from '@/features/post/domain/models/Post';
 
 // UI 중심 설계
 // Domain 모델의 내부 복잡성은 숨김.

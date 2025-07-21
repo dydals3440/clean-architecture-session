@@ -3,7 +3,7 @@ import {
   type PostViewModelProps,
 } from '@/features/post/application/mappers/PostMapper';
 import type { GetSinglePostRequest } from '@/features/post/application/validators/request/GetSinglePostRequest';
-import { Post, type PostDto } from '@/features/post/domain/Post';
+import { Post, type PostDto } from '@/features/post/domain/models/Post';
 import type { PostClientImplements } from '@/features/post/infrastructure/apis/PostClientImplements';
 
 export default class PostService {
