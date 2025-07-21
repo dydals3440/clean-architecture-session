@@ -8,7 +8,7 @@ export interface PostDto {
   title: string;
   body: string;
   tags: string[];
-  reactions: Reactions[];
+  reactions: Reactions;
   views: number;
   userId: number;
 }
@@ -47,5 +47,9 @@ export class Post {
   // 제목에 mother 라는 단어가 포함되어 있는지 확인하는 비즈니스 규칙
   hasMotherInTitle() {
     return this.dto.title.includes('mother');
+  }
+
+  hasMatthewInTitle() {
+    return this.dto.title.includes('Matthew');
   }
 }

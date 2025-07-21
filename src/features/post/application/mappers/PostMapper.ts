@@ -15,7 +15,7 @@ export interface PostViewModelProps {
   reactions: {
     likes: number;
     dislikes: number;
-  }[];
+  };
   views: number;
   userId: number;
   hasMotherInTitle: boolean;

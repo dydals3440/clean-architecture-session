@@ -26,7 +26,7 @@ export default class PostService {
     PostService.instance = undefined;
   }
 
-  private createPostModel(postDto: PostDto): Post {
+  public createPostModel(postDto: PostDto): Post {
     return new Post(postDto);
   }
 
