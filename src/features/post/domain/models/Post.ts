@@ -1,55 +1,60 @@
-export interface Reactions {
-  likes: number;
-  dislikes: number;
-}
+import type { PostEntity } from '@/features/post/domain/types/post.types';
+import type { Reactions } from '@/features/post/domain/types/reaction.types';
+import { PostTitle } from '@/features/post/domain/value-objects/PostTitle';
 
-export interface PostDto {
-  id: number;
-  title: string;
-  body: string;
-  tags: string[];
-  reactions: Reactions;
-  views: number;
-  userId: number;
-}
+export class Post implements PostEntity {
+  private _id: number;
+  private _title: PostTitle;
+  private _body: string;
+  private _tags: string[];
+  private _reactions: Reactions;
+  private _views: number;
+  private _userId: number;
 
-export class Post {
-  constructor(private readonly dto: PostDto) {}
+  constructor(dto: PostEntity) {
+    this._id = dto.id;
+    this._title = new PostTitle(dto.title);
+    this._body = dto.body;
+    this._tags = dto.tags;
+    this._reactions = dto.reactions;
+    this._views = dto.views;
+    this._userId = dto.userId;
+  }
 
   get id() {
-    return this.dto.id;
+    return this._id;
   }
 
   get title() {
-    return this.dto.title;
+    return this._title.value;
   }
 
   get body() {
-    return this.dto.body;
+    return this._body;
   }
 
   get tags() {
-    return this.dto.tags;
+    return this._tags;
   }
 
   get reactions() {
-    return this.dto.reactions;
+    return this._reactions;
   }
 
   get views() {
-    return this.dto.views;
+    return this._views;
   }
 
   get userId() {
-    return this.dto.userId;
+    return this._userId;
   }
 
   // 제목에 mother 라는 단어가 포함되어 있는지 확인하는 비즈니스 규칙
   hasMotherInTitle() {
-    return this.dto.title.includes('mother');
+    return this._title.hasMotherInTitle();
   }
 
   hasMatthewInTitle() {
-    return this.dto.title.includes('Matthew');
+    return this._title.hasMatthewInTitle();
   }
 }

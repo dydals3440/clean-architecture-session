@@ -1,6 +1,6 @@
 import type { Reactions } from './reactions';
 
-export interface Post {
+export interface PostDto {
   id: number;
   title: string;
   body: string;

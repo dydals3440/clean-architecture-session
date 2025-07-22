@@ -1,7 +1,7 @@
 import type { GetSinglePostRequest } from '../dto/request/GetSinglePostRequest';
 
-import type { Post } from '../dto/post';
+import type { PostDto } from '../dto/post.dto';
 
 export interface PostClientImplements {
-  getSinglePost: (request: GetSinglePostRequest) => Promise<Post>;
+  getSinglePost: (request: GetSinglePostRequest) => Promise<PostDto>;
 }

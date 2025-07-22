@@ -1,4 +1,5 @@
 import { StubPostClient } from '@/features/post/__tests__/infrastructure/StubPostClient';
+import { PostMapper } from '@/features/post/application/mappers/PostMapper';
 import PostService from '@/features/post/application/services/PostService';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
@@ -20,7 +21,7 @@ describe('PostService', () => {
 
       const singlePost = await postService.getSinglePost({ id });
 
-      const post = postService.createPostModel(singlePost);
+      const post = PostMapper.toDomain(singlePost);
       expect(post.hasMotherInTitle()).toBe(false);
     });
   });

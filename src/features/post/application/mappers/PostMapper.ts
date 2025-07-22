@@ -1,38 +1,53 @@
-// ViewModel
-// Presentation Layer에서 사용하는 데이터 타입
-// UI로 필요한 데이터를 가공해주는거죠. Domain이 변경되었다고 해서 영향을 받으면 안됨.
+import { Post } from '@/features/post/domain/models/Post';
+import type { PostEntity } from '@/features/post/domain/types/post.types';
+import type { PostDto as PostDto } from '@/features/post/infrastructure/dto/post.dto';
 
-import type { Post } from '@/features/post/domain/models/Post';
+export class PostMapper {
+  static toDto(post: Post): PostDto {
+    return {
+      id: post.id,
+      title: post.title,
+      body: post.body,
+      tags: post.tags,
+      reactions: post.reactions,
+      views: post.views,
+      userId: post.userId,
+    };
+  }
 
-// UI 중심 설계
-// Domain 모델의 내부 복잡성은 숨김.
-// 테스트
-export interface PostViewModelProps {
-  id: number;
-  title: string;
-  body: string;
-  tags: string[];
-  reactions: {
-    likes: number;
-    dislikes: number;
-  };
-  views: number;
-  userId: number;
-  hasMotherInTitle: boolean;
+  static toDomain(dto: PostDto): Post {
+    return new Post({
+      id: dto.id,
+      title: dto.title,
+      body: dto.body,
+      tags: dto.tags,
+      reactions: dto.reactions,
+      views: dto.views,
+      userId: dto.userId,
+    });
+  }
+
+  static fromEntity(entity: PostEntity): Post {
+    return new Post({
+      id: entity.id,
+      title: entity.title,
+      body: entity.body,
+      tags: entity.tags,
+      reactions: entity.reactions,
+      views: entity.views,
+      userId: entity.userId,
+    });
+  }
+
+  static toDomainList(dtos: PostDto[]): Post[] {
+    return dtos.map((dto) => this.toDomain(dto));
+  }
+
+  static fromEntityList(entities: PostEntity[]): Post[] {
+    return entities.map((entity) => this.fromEntity(entity));
+  }
+
+  static toDtoList(posts: Post[]): PostDto[] {
+    return posts.map((post) => this.toDto(post));
+  }
 }
-
-// Domain -> ViewModel
-// Domain: 비즈니스 로직 중심.
-// ViewMode: UI 중심
-// 외부 시스템의 개입은 절대 금지, zod 기반의 DTO 타입 (서버 응답 전용 타입)을 가져다 쓰는건 Layer간 의존 역전 위반입니다.
-
-export const toPostViewModel = (post: Post): PostViewModelProps => ({
-  id: post.id,
-  title: post.title,
-  body: post.body,
-  tags: post.tags,
-  reactions: post.reactions,
-  views: post.views,
-  userId: post.userId,
-  hasMotherInTitle: post.hasMotherInTitle(),
-});

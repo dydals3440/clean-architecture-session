@@ -1,7 +1,7 @@
 import type { PostClientImplements } from './PostClientImplements';
 
 import type { GetSinglePostRequest } from '../dto/request/GetSinglePostRequest';
-import type { Post } from '../dto/post';
+import type { PostDto } from '../dto/post.dto';
 import type { AxiosInstance } from 'axios';
 import axios from 'axios';
 import { API_ENDPOINTS } from '@/features/post/infrastructure/apis/constants/url';
@@ -28,8 +28,8 @@ export class PostClient implements PostClientImplements {
     PostClient.instance = undefined;
   }
 
-  public async getSinglePost(request: GetSinglePostRequest): Promise<Post> {
-    const { data } = await this.httpClient.get<Post>(`/${request.id}`);
+  public async getSinglePost(request: GetSinglePostRequest): Promise<PostDto> {
+    const { data } = await this.httpClient.get<PostDto>(`/${request.id}`);
 
     return data;
   }
